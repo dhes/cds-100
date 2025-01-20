@@ -1,0 +1,13 @@
+{
+  "resourceType": "Patient",
+  "id": "just-old-enough",
+  "name": [
+    {
+      "use": "anonymous",
+      "family": "Nobody",
+      "given": ["Absolutely"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-01-01"
+}

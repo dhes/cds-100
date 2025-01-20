@@ -1,0 +1,54 @@
+{
+  "resourceType": "PlanDefinition",
+  "id": "hypertension-screening",
+  "url": "http://example.org/fhir/PlanDefinition/hypertension-screening",
+  "version": "1.0.0",
+  "name": "HypertensionScreeningCDS",
+  "title": "Hypertension Screening Clinical Decision Support",
+  "status": "draft",
+  "experimental": false,
+  "publisher": "CDS100",
+  "description": "Recommends office blood pressure measurement (OBPM) for adults 18 years or older who have not had a recent BP measurement.",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "age"
+      },
+      "valueRange": {
+        "low": {
+          "value": 18,
+          "unit": "years",
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      }
+    }
+  ],
+  "library": [
+    "http://example.org/fhir/Library/HypertensionScreening"
+  ],
+  "action": [
+    {
+      "id": "measure-blood-pressure",
+      "title": "Measure Blood Pressure in Office",
+      "description": "Recommend office blood pressure measurement (OBPM) if the patient is 18+ and does not have a recent BP measurement.",
+      "trigger": [
+        {
+          "type": "named-event",
+          "name": "patient-view"
+        }
+      ],
+      "condition": [
+        {
+          "kind": "applicability",
+          "expression": {
+            "language": "text/cql",
+            "expression": "Needs Blood Pressure Measurement"
+          }
+        }
+      ],
+      "definitionCanonical": "http://example.org/fhir/ActivityDefinition/measure-blood-pressure"
+    }
+  ]
+}
